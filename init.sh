@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Raspberry Pi Setup Script for G50-W25 CEGEP Course
+# myrpi - Raspberry Pi Development Environment Setup Script
 # This script installs and configures common development tools
 # Usage: sudo ./init.sh setup
 
@@ -444,7 +444,7 @@ show_welcome_banner() {
 
 EOF
   echo -e "${NC}"
-  echo -e "${YELLOW}Raspberry Pi Setup Script for G50-W25 CEGEP Course${NC}"
+  echo -e "${YELLOW}Raspberry Pi Development Environment Setup${NC}"
   echo ""
 }
 

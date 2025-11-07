@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository (myrpi) contains Raspberry Pi scripts for the G50-W25 CEGEP course. The scripts are written in bash and intended to configure the Raspberry Pi with common tools used in this class.
+This repository (myrpi) contains Raspberry Pi setup scripts written in bash. The scripts are intended to configure the Raspberry Pi with common development tools and create a productive development environment.
 
 ## Repository Structure
 
-The repository is structured for educational purposes as part of a CEGEP course (G50-W25). Files and scripts will be organized to support Raspberry Pi development and experimentation.
+The repository is organized to support Raspberry Pi development and experimentation with a focus on automation and ease of use.
 
 ## Development Environment
 
@@ -119,4 +119,3 @@ The script automatically configures these global git aliases:
 ## Git Workflow
 
 - Main branch: `main`
-- This repository is part of an educational setting (CEGEP course G50-W25)
