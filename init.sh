@@ -181,7 +181,7 @@ install_gh() {
   chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
 
   # Add repository
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list >/dev/null
 
   # Update and install
   apt-get update
@@ -381,8 +381,36 @@ setup_config() {
   fi
 }
 
+# Display welcome banner
+show_welcome_banner() {
+  echo ""
+  echo -e "${GREEN}"
+  cat <<"EOF"
+ __          __  _                            _
+ \ \        / / | |                          | |
+  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |_ ___
+   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | __/ _ \
+    \  /\  /  __/ | (_| (_) | | | | | |  __/ | || (_) |
+     \/  \/ \___|_|\___\___/|_| |_| |_|\___|  \__\___/
+
+                              _ _
+                             (_) |
+  _ __ ___  _   _ _ __  _ __  _| |
+ | '_ ` _ \| | | | '__/| '_ \| | |
+ | | | | | | |_| | |   | |_) | |_|
+ |_| |_| |_|\__, |_|   | .__/|_(_)
+             __/ |     | |
+            |___/      |_|
+
+EOF
+  echo -e "${NC}"
+  echo -e "${YELLOW}Raspberry Pi Setup Script for G50-W25 CEGEP Course${NC}"
+  echo ""
+}
+
 # Main setup function
 setup() {
+  show_welcome_banner
   log_info "Starting Raspberry Pi setup..."
 
   # Create temp directory
