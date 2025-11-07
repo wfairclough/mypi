@@ -50,7 +50,7 @@ sudo ./init.sh setup
    - neovim (v0.11.5)
    - bat (v0.26.0)
    - fzf (v0.66.1)
-   - exa (v0.10.1)
+   - eza (v0.20.15) - modern ls replacement
 5. Clones asdf (v0.18.0) via git
 6. Runs curl-based installers for atuin and astral uv
 7. Installs Python 3.14 via uv

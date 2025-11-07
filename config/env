@@ -104,13 +104,13 @@ if command -v gh &> /dev/null; then
     alias ghic='gh issue create'
 fi
 
-# exa (enhanced ls)
-if command -v exa &> /dev/null; then
-    alias ls='exa'
-    alias ll='exa -alh --git'
-    alias la='exa -a'
-    alias l='exa -lh'
-    alias tree='exa --tree'
+# eza (enhanced ls - maintained fork of exa)
+if command -v eza &> /dev/null; then
+    alias ls='eza'
+    alias ll='eza -alh --git'
+    alias la='eza -a'
+    alias l='eza -lh'
+    alias tree='eza --tree'
 else
     # Fallback to standard ls
     alias ll='ls -alh'

@@ -377,38 +377,32 @@ install_fzf() {
   log_info "fzf installed successfully"
 }
 
-# Install exa
-install_exa() {
-  local exa_url="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-armv7-v0.10.1.zip"
-  local exa_sha256=""  # No sha256 provided, skip verification
+# Install eza (maintained fork of exa)
+install_eza() {
+  local eza_url="https://github.com/eza-community/eza/releases/download/v0.20.15/eza_aarch64-unknown-linux-gnu.tar.gz"
+  local eza_sha256=""  # No sha256 provided, skip verification
 
-  if check_command "exa"; then
-    log_info "exa is already installed, skipping"
+  if check_command "eza"; then
+    log_info "eza is already installed, skipping"
     return 0
   fi
 
-  log_info "Installing exa..."
+  log_info "Installing eza..."
 
-  # Ensure unzip is available
-  if ! check_command "unzip"; then
-    log_info "Installing unzip..."
-    apt-get install -y unzip
-  fi
+  local tarball="$TEMP_DIR/eza.tar.gz"
 
-  local zipfile="$TEMP_DIR/exa.zip"
+  download_and_verify "$eza_url" "$tarball" "$eza_sha256"
 
-  download_and_verify "$exa_url" "$zipfile" "$exa_sha256"
+  log_info "Extracting eza..."
+  tar -xzf "$tarball" -C "$TEMP_DIR"
 
-  log_info "Extracting exa..."
-  unzip -q "$zipfile" -d "$TEMP_DIR/exa"
-
-  # Copy exa binary from bin/exa to /usr/local/bin
-  if [[ -f "$TEMP_DIR/exa/bin/exa" ]]; then
-    cp "$TEMP_DIR/exa/bin/exa" "$INSTALL_DIR/bin/exa"
-    chmod +x "$INSTALL_DIR/bin/exa"
-    log_info "exa installed successfully"
+  # Copy eza binary to /usr/local/bin
+  if [[ -f "$TEMP_DIR/eza" ]]; then
+    cp "$TEMP_DIR/eza" "$INSTALL_DIR/bin/eza"
+    chmod +x "$INSTALL_DIR/bin/eza"
+    log_info "eza installed successfully"
   else
-    log_error "exa binary not found in extracted files"
+    log_error "eza binary not found in extracted files"
     return 1
   fi
 }
@@ -611,7 +605,7 @@ setup() {
   install_asdf
   install_nodejs
   install_fzf
-  install_exa
+  install_eza
   setup_config
   setup_git_aliases
 
