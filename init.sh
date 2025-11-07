@@ -330,9 +330,16 @@ install_asdf() {
   local asdf_dir="$user_home/.asdf"
   local asdf_version="v0.18.0"
 
-  if [[ -d "$asdf_dir" && -f "$asdf_dir/asdf.sh" ]]; then
+  # Check if asdf is already properly installed
+  if [[ -f "$asdf_dir/asdf.sh" ]]; then
     log_info "asdf is already installed, skipping"
     return 0
+  fi
+
+  # If directory exists but asdf.sh doesn't, it's a broken installation
+  if [[ -d "$asdf_dir" ]]; then
+    log_warn "Found existing $asdf_dir but asdf.sh is missing. Removing and reinstalling..."
+    sudo -u "$actual_user" rm -rf "$asdf_dir"
   fi
 
   log_info "Installing asdf via git clone..."

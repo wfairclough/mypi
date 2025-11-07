@@ -49,15 +49,16 @@ sudo ./init.sh setup
 4. Downloads and installs GitHub releases with SHA256 verification:
    - neovim (v0.11.5)
    - bat (v0.26.0)
-   - asdf (v0.18.0)
    - fzf (v0.66.1)
    - exa (v0.10.1)
-5. Runs curl-based installers for atuin and astral uv
-6. Installs Node.js v24.11.0 via asdf and sets it as the global version
-7. Sets up LazyVim configuration for neovim
-8. Copies `config/env` to `~/.config/myrpi/env`
-9. Modifies `~/.bashrc` to source the environment file
-10. Configures global git aliases for common operations
+5. Clones asdf (v0.18.0) via git
+6. Runs curl-based installers for atuin and astral uv
+7. Installs Python 3.14 via uv
+8. Installs Node.js v24.11.0 via asdf and sets it as the global version
+9. Sets up LazyVim configuration for neovim
+10. Copies `config/env` to `~/.config/myrpi/env`
+11. Modifies `~/.bashrc` to source the environment file
+12. Configures global git aliases for common operations
 
 ### Script Features
 
