@@ -51,6 +51,7 @@ sudo ./init.sh setup
    - bat (v0.26.0)
    - asdf (v0.18.0)
    - fzf (v0.66.1)
+   - exa (v0.10.1)
 5. Runs curl-based installers for atuin and astral uv
 6. Installs Node.js v24.11.0 via asdf and sets it as the global version
 7. Sets up LazyVim configuration for neovim

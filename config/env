@@ -104,10 +104,21 @@ if command -v gh &> /dev/null; then
     alias ghic='gh issue create'
 fi
 
+# exa (enhanced ls)
+if command -v exa &> /dev/null; then
+    alias ls='exa'
+    alias ll='exa -alh --git'
+    alias la='exa -a'
+    alias l='exa -lh'
+    alias tree='exa --tree'
+else
+    # Fallback to standard ls
+    alias ll='ls -alh'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
+
 # Common shortcuts
-alias ll='ls -alh'
-alias la='ls -A'
-alias l='ls -CF'
 alias ..='cd ..'
 alias ...='cd ../..'
 
@@ -184,10 +195,6 @@ export PAGER=less
 
 # Less options
 export LESS='-R -i -M -w'
-
-# Language
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # ============================================================================
 # Custom Functions

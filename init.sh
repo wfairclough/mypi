@@ -369,6 +369,38 @@ install_fzf() {
   log_info "fzf installed successfully"
 }
 
+# Install exa
+install_exa() {
+  local exa_url="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-armv7-v0.10.1.zip"
+  local exa_sha256=""  # No sha256 provided, skip verification
+
+  if check_command "exa"; then
+    log_info "exa is already installed, skipping"
+    return 0
+  fi
+
+  log_info "Installing exa..."
+
+  # Ensure unzip is available
+  if ! check_command "unzip"; then
+    log_info "Installing unzip..."
+    apt-get install -y unzip
+  fi
+
+  local zipfile="$TEMP_DIR/exa.zip"
+
+  download_and_verify "$exa_url" "$zipfile" "$exa_sha256"
+
+  log_info "Extracting exa..."
+  unzip -q "$zipfile" -d "$TEMP_DIR/exa"
+
+  # Find and copy exa binary to /usr/local/bin
+  find "$TEMP_DIR/exa" -name "exa-linux-armv7" -exec cp {} "$INSTALL_DIR/bin/exa" \;
+  chmod +x "$INSTALL_DIR/bin/exa"
+
+  log_info "exa installed successfully"
+}
+
 # Install Node.js with asdf
 install_nodejs() {
   local actual_user=$(get_actual_user)
@@ -561,6 +593,7 @@ setup() {
   install_asdf
   install_nodejs
   install_fzf
+  install_exa
   setup_config
   setup_git_aliases
 

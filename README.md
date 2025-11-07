@@ -37,7 +37,7 @@ That's it! Your Raspberry Pi is now ready for development.
 
 - **Modern text editor** (neovim with LazyVim)
 - **Version managers** (asdf for Node.js, uv for Python)
-- **Enhanced CLI tools** (bat, fzf, ripgrep, zoxide, atuin)
+- **Enhanced CLI tools** (bat, exa, fzf, ripgrep, zoxide, atuin)
 - **Git workflow tools** (lazygit, GitHub CLI, custom aliases)
 - **Development utilities** (jq, yq, httpie, tmux, htop)
 
