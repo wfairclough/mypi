@@ -162,6 +162,35 @@ install_apt_packages() {
   done
 }
 
+# Install GitHub CLI (gh)
+install_gh() {
+  if check_command "gh"; then
+    log_info "gh is already installed, skipping"
+    return 0
+  fi
+
+  log_info "Installing GitHub CLI (gh)..."
+
+  # Add GitHub CLI repository
+  log_info "Adding GitHub CLI apt repository..."
+
+  # Install dependencies
+  apt-get install -y curl gnupg
+
+  # Add GPG key
+  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+  chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+
+  # Add repository
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+
+  # Update and install
+  apt-get update
+  apt-get install -y gh
+
+  log_info "gh installed successfully"
+}
+
 # Install neovim
 install_neovim() {
   local nvim_url="https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-arm64.tar.gz"
@@ -348,6 +377,7 @@ setup() {
   # Run all installation steps
   system_update
   install_apt_packages
+  install_gh
   install_neovim
   install_lazyvim
   install_bat

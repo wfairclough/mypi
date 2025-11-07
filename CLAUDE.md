@@ -45,15 +45,16 @@ sudo ./init.sh setup
 
 1. Updates system packages (`apt update && apt upgrade`)
 2. Installs apt packages (git, jq, yq, htop, zoxide, tldr, ripgrep, tmux, lazygit, httpie)
-3. Downloads and installs GitHub releases with SHA256 verification:
+3. Installs GitHub CLI (gh) via official apt repository
+4. Downloads and installs GitHub releases with SHA256 verification:
    - neovim (v0.11.5)
    - bat (v0.26.0)
    - asdf (v0.18.0)
    - fzf (v0.66.1)
-4. Runs curl-based installers for atuin and astral uv
-5. Sets up LazyVim configuration for neovim
-6. Copies `config/env` to `~/.config/myrpi/env`
-7. Modifies `~/.bashrc` to source the environment file
+5. Runs curl-based installers for atuin and astral uv
+6. Sets up LazyVim configuration for neovim
+7. Copies `config/env` to `~/.config/myrpi/env`
+8. Modifies `~/.bashrc` to source the environment file
 
 ### Script Features
 

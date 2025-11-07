@@ -92,6 +92,18 @@ if command -v lazygit &> /dev/null; then
     alias lg='lazygit'
 fi
 
+# GitHub CLI (gh)
+if command -v gh &> /dev/null; then
+    alias ghpr='gh pr create'
+    alias ghpv='gh pr view'
+    alias ghpl='gh pr list'
+    alias ghcl='gh repo clone'
+    alias ghcr='gh repo create'
+    alias ghiv='gh issue view'
+    alias ghil='gh issue list'
+    alias ghic='gh issue create'
+fi
+
 # Common shortcuts
 alias ll='ls -alh'
 alias la='ls -A'
