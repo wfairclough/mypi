@@ -412,7 +412,7 @@ install_nodejs() {
   local actual_user=$(get_actual_user)
   local user_home=$(eval echo "~$actual_user")
   local asdf_dir="$user_home/.asdf"
-  local nodejs_version="24.11.0"
+  local nodejs_version="24.13.0"
 
   # Check if asdf is installed
   if [[ ! -d "$asdf_dir" ]]; then
